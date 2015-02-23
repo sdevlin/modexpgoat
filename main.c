@@ -46,12 +46,15 @@ int main(int argc, char **argv)
   mpz_set_str(x, "541182456", 10);
   mpz_set_str(y, argv[1], 10);
 
-  if ((mpz_cmp(y, p) >= 0) ||
-      (mpz_cmp_ui(y, 0) <= 0)) {
+  if ((mpz_cmp(y, p) >= 0) || (mpz_cmp_ui(y, 0) <= 0)) {
     exit(42);
   }
 
   modexp(s, y, x, p, 32);
+
+  printf("s: ");
+  mpz_out_str(stdout, 10, s);
+  printf("\n");
 
   return 0;
 }
